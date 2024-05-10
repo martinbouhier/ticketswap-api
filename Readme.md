@@ -1,6 +1,6 @@
 # TicketSwap API
 
-he TicketSwap API provides a seamless platform for buying and selling event tickets online. With user-friendly endpoints, developers can easily integrate ticket purchasing and listing functionalities into their React frontend applications. Whether it's concerts, sports events, or conferences, TicketSwap API offers a secure and efficient solution for handling online ticket transactions. Powered by Express and MongoDB, it ensures smooth communication between the backend and frontend, enabling users to browse, purchase, and list tickets with ease.
+The TicketSwap API provides a seamless platform for buying and selling event tickets online. With user-friendly endpoints, developers can easily integrate ticket purchasing and listing functionalities into their React frontend applications. Whether it's concerts, sports events, or conferences, TicketSwap API offers a secure and efficient solution for handling online ticket transactions. Powered by Express and MongoDB, it ensures smooth communication between the backend and frontend, enabling users to browse, purchase, and list tickets with ease.
 
 ## Installation
 
