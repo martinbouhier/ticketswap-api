@@ -67,3 +67,16 @@ export async function deleteTicket(id) {
     .deleteOne({ _id: new ObjectId(id) });
   return response;
 }
+
+
+export async function searchTicketsByTitle(title) {
+  const clientmongo = await connectToDB();
+  const regex = new RegExp(title, 'i'); // 'i' para que sea case-insensitive
+  const tickets = await clientmongo
+    .db(process.env.DB_NAME)
+    .collection(COLLECTION_TICKETS)
+    .find({ title: { $regex: regex } })
+    .toArray();
+
+  return tickets;
+} 
