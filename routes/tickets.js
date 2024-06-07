@@ -8,6 +8,8 @@ import {
   searchTicketsByTitle
 } from "../data/ticket.js";
 
+import auth from "../middleware/auth.js";
+
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -20,18 +22,18 @@ router.get("/:id", async (req, res) => {
   res.json(ticket);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const ticket = req.body;
   const result = await addTicket(ticket);
   res.json(result);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   const result = await deleteTicket(req.params.id);
   res.json(result);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const ticket = { ...req.body, _id: req.params.id };
     const result = await updateTicket(ticket);
