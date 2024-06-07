@@ -4,7 +4,8 @@ import {
   getAllTickets,
   addTicket,
   deleteTicket,
-  updateTicket
+  updateTicket,
+  searchTicketsByTitle
 } from "../data/ticket.js";
 
 const router = express.Router();
@@ -40,5 +41,11 @@ router.put("/tickets/:id", async (req, res) => {
   }
 });
 
+router.get("/tickets/search/:title", async (req, res) => {
+  const title = req.params.title;
+  const tickets = await searchTicketsByTitle(title);
+  res.json(tickets);
+  }
+);
 
 export default router;
