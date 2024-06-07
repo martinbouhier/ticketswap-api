@@ -1,12 +1,14 @@
 import { ObjectId } from "mongodb";
 import connectToDB from "./connection.js";
 
-export async function getTickets() {
+const COLLECTION_TICKETS="tickets";
+
+export async function getAllTickets() {
   const clientmongo = await connectToDB();
 
   const tickets = await clientmongo
-    .db("ticket_swap")
-    .collection("tickets")
+    .db(process.env.DB_NAME)
+    .collection(COLLECTION_TICKETS)
     .find()
     .toArray();
 
@@ -17,8 +19,8 @@ export async function getTicket(id) {
   const clientmongo = await connectToDB();
 
   const response = await clientmongo
-    .db("ticket_swap")
-    .collection("tickets")
+    .db(process.env.DB_NAME)
+    .collection(COLLECTION_TICKETS)
     .findOne({ _id: new ObjectId(id) });
 
   return response;
@@ -28,8 +30,8 @@ export async function addTicket(ticket) {
   const clientmongo = await connectToDB();
 
   const response = await clientmongo
-    .db("ticket_swap")
-    .collection("tickets")
+    .db(process.env.DB_NAME)
+    .collection(COLLECTION_TICKETS)
     .insertOne(ticket);
 
   return response;
@@ -40,19 +42,18 @@ export async function updateTicket(ticket) {
   const query = { _id: new ObjectId(ticket._id) };
   const newValues = {
     $set: {
-      event_name: ticket.first,
-      event_datetime: ticket.last,
-      event_location: ticket.year,
-      ticket_price: ticket.ticket_price,
-      event_description: ticket.event_description,
-      event_image: ticket.event_image,
-      additional_info: ticket.additional_info 
+      title: ticket.title,
+      date: ticket.date,
+      description: ticket.description,
+      image: ticket.image,
+      phone: ticket.phone,
+      price: ticket.price
     },
   };
 
   const response = await clientmongo
-    .db("ticket_swap")
-    .collection("tickets")
+    .db(process.env.DB_NAME)
+    .collection(COLLECTION_TICKETS)
     .updateOne(query, newValues);
   return response;
 }
@@ -61,8 +62,8 @@ export async function deleteTicket(id) {
   const clientmongo = await connectToDB();
 
   const response = await clientmongo
-    .db("ticket_swap")
-    .collection("tickets")
+    .db(process.env.DB_NAME)
+    .collection(COLLECTION_TICKETS)
     .deleteOne({ _id: new ObjectId(id) });
   return response;
 }

@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api/ticket", ticketRouter);
+app.use("/api/", ticketRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
