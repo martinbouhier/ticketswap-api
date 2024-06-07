@@ -8,30 +8,32 @@ import {
   searchTicketsByTitle
 } from "../data/ticket.js";
 
+import auth from "../middleware/auth.js";
+
 const router = express.Router();
 
-router.get("/tickets", async (req, res) => {
+router.get("/", async (req, res) => {
   const tickets = await getAllTickets();
   res.json(tickets);
 });
 
-router.get("/tickets/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const ticket = await getTicket(req.params.id);
   res.json(ticket);
 });
 
-router.post("/tickets/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const ticket = req.body;
   const result = await addTicket(ticket);
   res.json(result);
 });
 
-router.delete("/tickets/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   const result = await deleteTicket(req.params.id);
   res.json(result);
 });
 
-router.put("/tickets/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const ticket = { ...req.body, _id: req.params.id };
     const result = await updateTicket(ticket);
@@ -41,7 +43,7 @@ router.put("/tickets/:id", async (req, res) => {
   }
 });
 
-router.get("/tickets/search/:title", async (req, res) => {
+router.get("/search/:title", async (req, res) => {
   const title = req.params.title;
   const tickets = await searchTicketsByTitle(title);
   res.json(tickets);

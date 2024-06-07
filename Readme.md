@@ -20,11 +20,14 @@ The TicketSwap API provides a seamless platform for buying and selling event tic
 3. You can test the endpoints using tools like [Postman](https://www.postman.com/) or [curl](https://curl.se/).
 
 ## Endpoints
-
-- `GET /api/route: Description of the route.`
-- `POST /api/route: Description of the route.`
-- `PUT /api/route/:id: Description of the route.`
-- `DELETE /api/route/:id: Description of the route.`
+- `POST /api/users/register: Crea un nuevo usuario.`
+- `POST /api/users/login: Inicia sesión con las credenciales proporcionadas y devuelve un token de autenticación JWT.`
+- `POST /api/tickets: Crea un nuevo ticket.`
+- `GET /api/tickets: Obtiene una lista de todos los tickets.`
+- `GET /api/tickets/: Obtiene un ticket por su ID.`
+- `PUT /api/tickets/: Actualiza un ticket existente.`
+- `DELETE /api/tickets/: Elimina un ticket por su ID.`
+- `GET /api/tickets/search/: Busca tickets que coincidan con el título proporcionado.`
 
 ## Project Structure
 
