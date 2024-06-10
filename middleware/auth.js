@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 async function auth(req, res, next) {
   try {
     const token = req.header("Authentication");
-    const payload = jwt.verify(token, process.env.CLAVE_SECRETA);
+    const payload = jwt.verify(token, process.env.SECRET_KEY);
     console.log(payload);
     next();
   } catch (error) {
