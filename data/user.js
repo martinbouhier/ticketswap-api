@@ -33,13 +33,13 @@ export async function addUser(user) {
   return result;
 }
 
-export async function findByCredential(email, password) {
+export async function findByCredential(username, password) {
   const clientmongo = await getConnection();
 
   const user = await clientmongo
     .db(process.env.DB_NAME)
     .collection("users")
-    .findOne({ email: email });
+    .findOne({ username: username });
 
   if (!user) {
     throw new Error("Credenciales no validas");
