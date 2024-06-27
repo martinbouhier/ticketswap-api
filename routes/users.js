@@ -15,7 +15,7 @@ usersRouter.post("/register", async (req, res) => {
 usersRouter.post("/login", async (req, res) => {
   try {
     console.log(req.body);
-    const user = await findByCredential(req.body.email, req.body.password);
+    const user = await findByCredential(req.body.username, req.body.password);
     const token = await generateAuthToken(user);
     res.send({ token });
   } catch (error) {
