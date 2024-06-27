@@ -51,11 +51,10 @@ If you want to contribute to this project, please follow these steps:
 
 ## Author
 
-- Name: Your Name | your-email@example.com
-- Name: Your Name | your-email@example.com
-- Name: Your Name | your-email@example.com
-- Name: Your Name | your-email@example.com
-- Name: Your Name | your-email@example.com
+- Name: chiaravallone04 | chiara.vallone04@gmail.com
+- Name: alexlangman | alulang@hotmail.com
+- Name: kevinmvuylsteke | kevinmvuylsteke@gmail.com
+- Name: martinbouhier | mbouhier128@gmail.com
 
 ## License
 
